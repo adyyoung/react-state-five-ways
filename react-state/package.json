@@ -1,0 +1,63 @@
+{
+  "scripts": {
+    "start": "webpack-dev-server --mode development",
+    "test": "echo 'Tests needs configured' && exit 1",
+    "lint": "eslint 'src/**/*.js' --fix",
+    "build": "rm -rf dist && mkdir dist && webpack --mode production --config webpack.config.js",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,json}": [
+      "prettier-eslint --write --fix",
+      "git add"
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "./node_modules/babel-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/))\\.js?$",
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ]
+  },
+  "dependencies": {
+    "cxs": "^6.2.0",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.3",
+    "babel-eslint": "8.2.3",
+    "babel-jest": "22.4.4",
+    "babel-loader": "7.1.4",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-stage-2": "6.24.1",
+    "babel-preset-react": "6.24.1",
+    "cross-env": "5.1.5",
+    "eslint": "5.0.1",
+    "eslint-config-unobtrusive": "1.2.2",
+    "eslint-loader": "2.0.0",
+    "eslint-plugin-import": "2.13.0",
+    "eslint-plugin-react": "^7.10.0",
+    "extract-text-webpack-plugin": "3.0.2",
+    "history": "^4.7.2",
+    "html-webpack-plugin": "3.2.0",
+    "husky": "0.14.3",
+    "jest": "22.4.4",
+    "lint-staged": "7.1.1",
+    "prettier": "1.12.1",
+    "prettier-eslint": "8.8.1",
+    "prettier-eslint-cli": "4.7.1",
+    "style-loader": "0.21.0",
+    "webpack": "4.8.3",
+    "webpack-cli": "2.1.3",
+    "webpack-dev-server": "3.1.4"
+  }
+}
