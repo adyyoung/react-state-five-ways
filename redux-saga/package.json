@@ -3,14 +3,7 @@
     "start": "webpack-dev-server --mode development",
     "test": "echo 'Tests needs configured' && exit 1",
     "lint": "eslint 'src/**/*.js' --fix",
-    "build": "rm -rf dist && mkdir dist && webpack --mode production --config webpack.config.js",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,json}": [
-      "prettier-eslint --write --fix",
-      "git add"
-    ]
+    "build": "rm -rf dist && mkdir dist && webpack --mode production --config webpack.config.js"
   },
   "jest": {
     "transform": {
@@ -52,7 +45,6 @@
     "extract-text-webpack-plugin": "3.0.2",
     "history": "^4.7.2",
     "html-webpack-plugin": "3.2.0",
-    "husky": "0.14.3",
     "jest": "22.4.4",
     "lint-staged": "7.1.1",
     "prettier": "1.12.1",
