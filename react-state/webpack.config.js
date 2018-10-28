@@ -16,8 +16,7 @@ module.exports = {
     filename: 'main.js',
     path: path.join(__dirname, '/dist/'),
     libraryTarget: 'umd',
-    umdNamedDefine: true,
-    library: 'Connie',
+    umdNamedDefine: true
   },
   module: {
     rules: [
