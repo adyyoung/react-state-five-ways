@@ -1,18 +1,24 @@
 import { getQuestions } from '../apis/questionsApis';
 
+const fetchQuestions = () => dispatch =>
+  getQuestions.then(data => {
+    const newData = data.filter(item => !item.answer);
 
-const fetchQuestions = () => (dispatch) =>
- getQuestions.then((data) => {
-  const newData = data.filter((item) => !item.answer);
+    return dispatch({
+      type: 'FETCH_QUESTIONS',
+      payload: { questions: newData }
+    });
+  });
 
-  return dispatch({ type: 'FETCH_QUESTIONS', payload: { questions: newData } });
-})
+const sendAnswer = id => ({ type: 'REMOVE_QUESTION', payload: { id } });
 
-const sendAnswer = (id) => (dispatch) => (
-  dispatch({ type: 'REMOVE_QUESTION', payload: { id } })
-);
+const handleChange = questionValue => ({
+  type: 'HANDLE_QUESTION_QUESTION',
+  payload: { questionValue }
+});
 
 export default {
   fetchQuestions,
-  sendAnswer
+  sendAnswer,
+  handleChange
 };
