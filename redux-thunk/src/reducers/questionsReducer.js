@@ -1,10 +1,11 @@
 const initialState = {
   questions: [
     {
-      'id': '000',
-      'question': ''
+      id: '000',
+      question: ''
     }
-  ]
+  ],
+  questionValue: ''
 };
 
 const questionsReducer = (state = initialState, action) => {
@@ -18,7 +19,13 @@ const questionsReducer = (state = initialState, action) => {
     case 'REMOVE_QUESTION':
       return {
         ...state,
-        questions: state.questions.filter((item) => item.id !== action.payload.id)
+        questions: state.questions.filter(item => item.id !== action.payload.id)
+      };
+
+    case 'HANDLE_QUESTION_QUESTION':
+      return {
+        ...state,
+        questionValue: action.payload.questionValue
       };
 
     default:

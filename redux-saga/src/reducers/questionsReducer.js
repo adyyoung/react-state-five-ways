@@ -21,6 +21,12 @@ const questionsReducer = (state = initialState, action) => {
         questions: state.questions.filter((item) => item.id !== action.payload.id)
       };
 
+    case 'HANDLE_QUESTION_QUESTION':
+      return {
+        ...state,
+        questionValue: action.payload.questionValue
+      };
+
     default:
       return state;
   }

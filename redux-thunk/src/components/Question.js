@@ -84,56 +84,69 @@ const wellClassName = cxs({
 });
 
 class Question extends Component {
-  state = {
-    answer: ''
-  }
-
-  handleChange = ({target: {value}}) => {
-    this.setState({answer: value});
-  }
-
   cancel = () => {
     this.props.history.push('');
-  }
+  };
 
-  render () {
+  render() {
     const {
       match: {
-        params: {
-          id
-        }
+        params: { id }
       },
       questions,
       sendAnswer,
-      history
+      history,
+      handleChange,
+      questionValue
     } = this.props;
-    const {
-      answer
-    } = this.state;
-    const question = questions.find((question) => question.id === id) || {id: '000', question: ''};
+    const question = questions.find(question => question.id === id) || {
+      id: '000',
+      question: ''
+    };
 
     return (
-      <form className={mainClassName} onSubmit={() => {sendAnswer(id); history.push('/')}}>
+      <form
+        className={mainClassName}
+        onSubmit={() => {
+          sendAnswer(id);
+          history.push('/');
+        }}
+      >
         <div className={subSideClassName} />
         <div className={subCenterClassName}>
           <h2 className={headingClassName}>Answer the question below:</h2>
-          <div className={wellClassName}><p className={textClassName}>{question.question}</p></div>
-          <textarea className={inputClassname} onChange={this.handleChange} value={this.state.answer} placeholder='Enter answer' autoFocus />
+          <div className={wellClassName}>
+            <p className={textClassName}>{question.question}</p>
+          </div>
+          <textarea
+            className={inputClassname}
+            onChange={event => handleChange(event.target.value)}
+            value={questionValue}
+            placeholder="Enter answer"
+            autoFocus
+          />
           <br />
-          <input type="submit" className={primaryButtonClassName} disabled={!answer} value="Click to send"/>
-          <button className={secondaryButtonClassName} onClick={this.cancel}>Cancel</button>
+          <input
+            type="submit"
+            className={primaryButtonClassName}
+            disabled={!questionValue}
+            value="Click to send"
+          />
+          <button className={secondaryButtonClassName} onClick={this.cancel}>
+            Cancel
+          </button>
         </div>
         <div className={subSideClassName} />
       </form>
     );
-  };
-};
+  }
+}
 
 const mapStateToProps = ({ questions }) => ({
   ...questions
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return bindActionCreators({ ...questionsActions }, dispatch);
 };
 
