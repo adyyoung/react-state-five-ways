@@ -1,0 +1,27 @@
+{
+  "extends": "unobtrusive",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "es6": true
+  },
+  "rules": {
+    "react/jsx-filename-extension": 0,
+    "react/jsx-quotes": 0,
+    "react/wrap-multilines": 0,
+    "react/jsx-closing-tag-location": 0,
+    "react/jsx-sort-prop-types": 0,
+    "no-extra-parens": 0,
+    "react/jsx-uses-vars": 1,
+    "react/jsx-uses-react": 1
+  },
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "plugins": [
+    "react",
+    "import"
+  ]
+}
